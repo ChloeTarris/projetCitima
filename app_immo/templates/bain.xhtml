@@ -1,0 +1,38 @@
+<html>
+{% extends "layout.html" %}
+{% block content %}
+      <h1>Identification des objets dans une salle de bain</h1>
+      <head>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            </head>
+      <script type="text/javascript">
+      $( document ).ready(function() {
+        $('#selectmenu').on('change', function() {
+          location.href =  '/piece/'+ $( "#selectmenu option:selected" ).text()
+            // this.value ;
+        });
+    })
+    </script>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.lang }} 
+    <?xml version="1.0" encoding="UTF-8"?>
+      <body>
+        <h3><U>Salle de bain avant/après détection d'objets:</U></h3>
+        <img src="/static/photo_salle_de_bain-2.jpg" width="600" height="500">
+        <img src="/static/test_photo_salle_de_bain.jpg" width="600" height="500">
+        <h5>Dans cette pièce il a détecté un évier à 89%.<br/>
+        Etant donné que nous n'avons pas d'information sur d'autres objets dans cette pièce et qu'un évier peut être présent<br/>
+        dans plusieurs types de pièces on ne peut pas donné de résultat concluant.
+        </h5>
+        <h3><U>Conclusion:</U></h3>  
+        <h5> Cet exemple nous montre la limite de ce code. En effet il manque de précision, il faudrait pouvoir ajouter des items<br/>
+        pour pouvoir mieux identifier les différents types de pièces, ar exemple ici il faudrait faire apprendre au modèle à détecter des douches ou baignoire. 
+        Ceci nécessiterait de faire du transfert learning.<br/>
+        De plus, il faudrait utiliser un reseau de neurone pour pouvoir différencier les pièces qui possèdent <br/>
+        les mêmes objets pour savoir s'il sagit de la même pièce mais prise sous un angle différents ou une pièce différentes.
+        </h5>
+      </body>
+      </form>
+</html>
+{% endblock content %}

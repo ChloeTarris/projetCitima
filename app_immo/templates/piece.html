@@ -1,0 +1,25 @@
+<html>
+  {% extends "layout.html" %}
+  {% block content %}
+      <h1>Choisissez un jeu de données</h1>
+      <head>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      </head>
+      <h1>Identification des pieces</h1>
+      <head>
+          <script type="text/javascript">
+            $( document ).ready(function() {
+                $('#selectmenu').on('change', function() {
+                  location.href =  '/piece/'+ $( "#selectmenu option:selected" ).text()
+                    // this.value ;
+                });
+            })
+          </script>
+      </head>
+      <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.lang }}
+  
+      </form> 
+  {% endblock content %}
+</html>

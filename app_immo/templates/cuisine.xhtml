@@ -1,0 +1,33 @@
+<html>
+{% extends "layout.html" %}
+{% block content %}
+      <h1>Identification des objets dans une cuisine</h1>
+      <head>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            </head>
+      <script type="text/javascript">
+      $( document ).ready(function() {
+        $('#selectmenu').on('change', function() {
+          location.href =  '/piece/'+ $( "#selectmenu option:selected" ).text()
+            // this.value ;
+        });
+    })
+    </script>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.lang }} 
+    <?xml version="1.0" encoding="UTF-8"?>
+      <body>
+        <img src="/static/photo_cuisine-2.jpg" width="600" height="400">
+        <img src="/static/test_photo_cuisine.jpg" width="600" height="400">
+        <h4><U>Résultat:</U></h4>
+        <h5>Ici on détecte un réfrigérateur et un évier.<br/>
+          Deux objets qui peuvent être présents dans une cuisine. Cette pièce est donc défini comme une cuisine.
+        </h5>
+        <h4><U>Conclusion:</U></h4>
+        <h5>On peut donc dire que dans ce bien une cuisine est présente mais cette pièce n'est comptée lorsque qu'on défini le type de bien.
+        </h5>
+      </body>
+      </form>
+</html>
+{% endblock content %}

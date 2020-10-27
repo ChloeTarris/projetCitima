@@ -1,0 +1,42 @@
+<html>
+{% extends "layout.html" %}
+{% block content %}
+      <h1>Identification des objets dans une chambre</h1>
+      <h2>Chambre numero 1 </h2>
+      <head>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            </head>
+      <script type="text/javascript">
+      $( document ).ready(function() {
+        $('#selectmenu').on('change', function() {
+          location.href =  '/piece/'+ $( "#selectmenu option:selected" ).text()
+            // this.value ;
+        });
+    })
+    </script>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.lang }} 
+    <?xml version="1.0" encoding="UTF-8"?>
+      <body>
+        <h3><U>Premiere chambre avant/après détection d'objets:</U></h3>
+        <img src="/static/photo_chambre-2.jpg" width="600" height="500">
+        <img src="/static/test_photo_chambre.jpg" width="600" height="500">
+        <h5>Dans cette pièce il a détecté un lit à 96%.<br/>
+          Le code nous retourne que c'est une <U>chambre.</U></h5>
+        <h3><U>Deuxieme chambre avant/après détection d'objets:</U></h3>
+        <img src="/static/photo_chambre2-2.jpg" width="600" height="400">
+        <img src="/static/test_photo_chambre2.jpg" width="600" height="400">
+        <h5>Dans cette pièce il a détecté un lit à 96%,un ordinateur à 76% et un sac 91%.<br/>
+          Ce sont des objets qui peuvent être présents dans une chambre.<br/>
+          Le code nous retourne que c'est une <U>chambre.</U></h5>
+          <br/>
+          <br/>
+        <h3>Conclusion:</h3>  
+        <h5>Etant donné que les deux chambres ne possèdent pas les mêmes objets détectés sur les images <br/>
+        et que ces objets ne se situe pas au même endroit lors de la détection,<br/>
+         on peut considéré que ce sont deux pièces différentes et que ce bien est déja de type T3 si on considère qu'il y a un salon en plus. </h5>
+      </body>
+      </form>
+</html>
+{% endblock content %}

@@ -1,0 +1,44 @@
+<html>
+{% extends "layout.html" %}
+{% block content %}
+      <h1>Identification des objets dans un salon</h1>
+      <head>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            </head>
+      <script type="text/javascript">
+      $( document ).ready(function() {
+        $('#selectmenu').on('change', function() {
+          location.href =  '/piece/'+ $( "#selectmenu option:selected" ).text()
+            // this.value ;
+        });
+    })
+    </script>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.lang }} 
+    <?xml version="1.0" encoding="UTF-8"?>
+      <body>
+        <h3><U>Premier exemple d'un salon:</U></h3>
+        <img src="/static/photo_salon-2.jpg" width="700" height="500">
+        <img src="/static/test_photo_salon.jpg" width="700" height="500">
+        <h5>Dans cette pièce il a détecté un canapé à 96%,une chaise à 82%, une table à manger et des vases.<br/>
+          Ce sont des objets qui peuvent être présents dans un salon.<br/>
+          Le code nous retourne que c'est un <U>salon.</U></h5>
+          <br/>
+          <br/>
+        <h3><U>Deuxieme exemple d'un salon:</U></h3>
+        <img src="/static/photo_couloir-2.jpg" width="700" height="500">
+        <img src="/static/test_photo_couloir.jpg" width="700" height="500">
+        <h5>Dans cette pièce il a détecté un canapé à 96%,une chaise à 82%, une table à manger à 94%,un vase à 90%, une plante à 97%<br/>
+          et un réfrigérateur à 60%.Ce sont des objets qui peuvent être présents dans un salon sauf pour le réfrigérateur.<br/>
+          La détection est éronnée mais étant la seule détection mauvaise,<br/>
+          le code nous retourne tout de même que c'est un <U>salon</U>.</h5>
+        <br/>
+        <h3><U>Conclusion:</U></h3>  
+        <h5>Etant donné que les deux salons possèdent pratiquement les mêmes objets détectés , <br/>
+          et que si on considère qu'un bien possède généralement qu'un salon alors le code retourne que c'est la même pièce.<br/>
+          Cela nous confirme que ce bien est un 3 pièces.</h5>
+      </body>
+      </form>
+</html>
+{% endblock content %}
